@@ -53,7 +53,7 @@
         }
 
         button:active {
-            background-color: #1c231c;
+            background-color: #c90076;
         }
 
             
@@ -87,6 +87,9 @@
         function showNumber() {
             const number = Math.floor(Math.random() * 5) + 1; 
             document.getElementById("numbershow").innerText = "數字是: " + number;  }
+
+
+        
         
         async function showImage() {
             const response = await fetch('/get-images');       // 隨機選取陣列索引
@@ -100,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 
