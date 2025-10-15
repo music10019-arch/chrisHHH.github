@@ -53,20 +53,21 @@
     
     <h1>點擊按鈕顯示數字</h1>
     <p>你每按一下</p>
-    <p class="p3">會出現隨機數字</p>
+    <p class="p3">會出現1~5隨機數字</p>
     <button onclick="showNumber()">點我!</button>
-    <p id="numberDisplay"></p>
+    <p id="numbershow"></p>
 
     
     <h1>點擊按鈕顯示圖片</h1>
     <p>你每按一下 會出現圖片</p>
     <button onmouseover="showImage()">碰我就好!</button>
+    <br>
     <img src="https://music10019-arch.github.io/chrisHHH.github/images/Luoyang.jpg" alt="Luoyang" width="100">
 
     <script>
         function showNumber() {
-            const number = Math.floor(Math.random() * 100) + 1; 
-            document.getElementById("numberDisplay").innerText = "數字是: " + number;  }
+            const number = Math.floor(Math.random() * 5) + 1; 
+            document.getElementById("numbershow").innerText = "數字是: " + number;  }
         
         function showImage() {
             const images = [ 
@@ -88,6 +89,7 @@
     </script>
 </body>
 </html>
+
 
 
 
