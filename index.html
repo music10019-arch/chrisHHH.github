@@ -88,26 +88,19 @@
             const number = Math.floor(Math.random() * 5) + 1; 
             document.getElementById("numbershow").innerText = "數字是: " + number;  }
         
-        function showImage() {
-            const images = [ 
-            "Luoyang.jpg",
-            "Xiamen.jpg",
-            "Pyongyang.jpg"
-            ];
-                        // 隨機選取陣列索引
+        async function showImage() {
+            const response = await fetch('/get-images');       // 隨機選取陣列索引
+            const images = await response.json();  // JSON → 陣列
             const randomIndex = Math.floor(Math.random() * images.length);
+            document.querySelector("img").src = "images/" + images[randomIndex]; }
             
-                        // 因為圖片都在 images/ 資料夾，所以加上 "images/" 前綴
-            const imgsUrl = "images/" + images[randomIndex];
-                        //所以 document.querySelector("img") 會抓到這個 <img>，然後可以改它的 src 來換圖片
-            document.querySelector("img").src = imgsUrl;     }
-            
-
+          
             
       
     </script>
 </body>
 </html>
+
 
 
 
