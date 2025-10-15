@@ -1,19 +1,83 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
     <title>數字顯示網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 字型 */
+            background-color: #f0f8ff;      /* 背景顏色 */
+            color: #333;                    /* 文字顏色 */
+        }
+
+        h1 {
+            color: #ff4500;                 /* 標題顏色 */
+            font-size: 32px;                /* 標題大小 */
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;                /* 文字大小 */
+            line-height: 1.5;
+        }
+
+        button {
+            background-color: #4CAF50;     /* 按鈕背景 */
+            color: white;                   /* 按鈕文字顏色 */
+            padding: 10px 20px;             /* 按鈕內距 */
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;     /* 滑鼠移上去變色 */
+        }
+
+        /* 表格範例 */
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #888;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
-
-
 
 <body>
     <h1>點擊按鈕顯示數字</h1>
-<p>這是第一段文字</p>
-<p>這是第二段文字</p>
-<p>TRY TO ADD   ffffffff LINE 3RD</p>
-    <p>多多多文字     999</p>
+    <p>這是第一段文字</p>
+    <p>這是第二段文字</p>
+    <p>TRY TO ADD ffffffff LINE 3RD</p>
+    <p>多多多文字 999</p>
+
     <button onclick="showNumber()">點我!</button>
     <p id="numberDisplay"></p>
+
+    <!-- 表格範例 -->
+    <table>
+        <tr>
+            <th>名稱</th>
+            <th>數值</th>
+        </tr>
+        <tr>
+            <td>Apple</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Banana</td>
+            <td>20</td>
+        </tr>
+    </table>
 
     <script>
         function showNumber() {
@@ -22,9 +86,4 @@
         }
     </script>
 </body>
-
-
 </html>
-
-
-
