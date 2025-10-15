@@ -27,7 +27,7 @@
         button {
             background-color: #49934c;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 25px;
             font-size: 16px;
             border: none;
             border-radius: 25px;
@@ -38,7 +38,7 @@
             background-color: #1f5e22;
         }
 
-        button::active {
+        button:active {
             background-color: #1c231c;
         }
 
@@ -60,9 +60,9 @@
     
     <h1>點擊按鈕顯示圖片</h1>
     <p>你每按一下 會出現圖片</p>
-    <button onmouseover="showImage()">碰我就好!</button>
-    <br>
-    <img src="https://music10019-arch.github.io/chrisHHH.github/images/Luoyang.jpg" alt="Luoyang" width="100">
+    <button onmouseover="showImage()">輕輕碰到就好!</button>
+    <br> <br>
+    <img src="images/Luoyang.jpg" alt="Luoyang" width="100">
 
     <script>
         function showNumber() {
@@ -81,7 +81,7 @@
                         // 因為圖片都在 images/ 資料夾，所以加上 "images/" 前綴
             const imgsUrl = "images/" + images[randomIndex];
                         //所以 document.querySelector("img") 會抓到這個 <img>，然後可以改它的 src 來換圖片
-            document.querySelector("img").src = imgUrl;     }
+            document.querySelector("img").src = imgsUrl;     }
             
 
             
@@ -89,6 +89,7 @@
     </script>
 </body>
 </html>
+
 
 
 
