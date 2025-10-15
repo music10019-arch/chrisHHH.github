@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
-    <title>隨機圖片等等網站</title>
+    <title> </title>
     
     <style>
         body {
@@ -15,6 +15,16 @@
             font-size: 32px;
         }
 
+        /*                            新增 flex 容器，讓兩個 h1 左右顯示 */
+        .flex-container {
+            display: flex;
+            justify-content: space-between; /* 左右對齊 */
+            align-items: center; /* 垂直置中 */
+            margin-bottom: 20px;  }
+
+        .block {
+            width: 48%; /* 左右區塊各占 48% */ }
+            
         p {
             font-size: 18px;
             line-height: 1.5; margin: 5px 0;
@@ -46,23 +56,27 @@
     </style>
 </head>
 
-<body>
+<body> <div class="flex-container">
+
+    <!-- <p class="pg1"> </p>
+    <p class="pg2"> </p> -->
     
-    <p class="pg1"> </p>
-    <p class="pg2"> </p>
-    
+    <!-- 左邊區塊: 顯示數字 -->
+    <div class="block">
     <h1>點擊按鈕顯示數字</h1>
     <p>你每按一下</p>
     <p class="p3">會出現1~5隨機數字</p>
     <button onclick="showNumber()">點我!</button>
-    <p id="numbershow">          </p>
- 
-    
+    <p id="numbershow">          </p>                       </div>
+
+
+    <!-- 右邊區塊: 顯示圖片 -->
+    <div class="block">
     <h1>滑過按鈕顯示圖片</h1>
     <p>你每滑過一下 會出現圖片</p>
     <button onmouseover="showImage()">輕輕碰到就好!</button>
     <br> <br>
-    <img src=""   height="400">
+    <img src=""   height="250">                            </div>
 
     
     <script>
@@ -90,6 +104,7 @@
     </script>
 </body>
 </html>
+
 
 
 
