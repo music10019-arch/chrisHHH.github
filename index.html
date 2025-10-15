@@ -17,11 +17,11 @@
 
         p {
             font-size: 18px;
-            line-height: 1.5;
+            line-height: 1.5; margin: 5px 0;
         }
         .p3 {
             color: gold;
-            font-size: 20px; margin: 5px 0;
+            font-size: 20px; 
         }
 
         button {
@@ -52,25 +52,43 @@
     <p class="pg2"> </p>
     
     <h1>點擊按鈕顯示數字</h1>
-    <p>這是第一段文字</p>
+    <p>你每按一下</p>
     <p class="p3">會出現隨機數字</p>
     <button onclick="showNumber()">點我!</button>
     <p id="numberDisplay"></p>
 
     
     <h1>點擊按鈕顯示圖片</h1>
-    <p>這是第二段文字</p>
-    <!-- 圖片加入 -->
-    <img src="https://music10019-arch.github.io/chrisHHH.github/images/Luoyang.jpg" alt="Luoyang" width="80">
+    <p>你每按一下 會出現圖片</p>
+    <button onclick="showImage()">點我!</button>
+    <img src="https://music10019-arch.github.io/chrisHHH.github/images/Luoyang.jpg" alt="Luoyang" width="100">
 
     <script>
         function showNumber() {
             const number = Math.floor(Math.random() * 100) + 1; 
-            document.getElementById("numberDisplay").innerText = "數字是: " + number;
-        }
+            document.getElementById("numberDisplay").innerText = "數字是: " + number;  }
+        
+        function showImage() {
+            const images = [ 
+            "Luoyang.jpg",
+            "Xiamen.jpg",
+            "Pyongyang.jpg"
+            ];
+                        // 隨機選取陣列索引
+            const randomIndex = Math.floor(Math.random() * images.length);
+            
+                        // 因為圖片都在 images/ 資料夾，所以加上 "images/" 前綴
+            const imgsUrl = "images/" + images[randomIndex];
+                        //所以 document.querySelector("img") 會抓到這個 <img>，然後可以改它的 src 來換圖片
+            document.querySelector("img").src = imgUrl;     }
+            
+
+            
+      
     </script>
 </body>
 </html>
+
 
 
 
