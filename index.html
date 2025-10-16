@@ -106,7 +106,7 @@
 
         // 如果快取陣列還是空的，才向 GitHub API 請求
         if (cachedImages.length === 0) {
-            const response = await fetch('https://api.github.com/repos/<username>/<repo>/contents/images'); 
+            const response = await fetch('https://api.github.com/repos/music10019-arch/chrisHHH.github/contents/images'); 
             // 取得 repo 裡 images 資料夾內容
 
             const files = await response.json();  
@@ -139,6 +139,7 @@
     </script>
 </body>
 </html>
+
 
 
 
