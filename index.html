@@ -15,7 +15,7 @@
             font-size: 32px;
         }
 
-        /*                            新增 flex 容器，讓兩個 h1 左右顯示 */
+        /*      !!!!!!!!!!!!!!!!!!!  新增 flex 容器，讓兩個 h1 左右顯示 !!!!!!!!!!! */
         .flex-container {
             display: flex;
             justify-content: space-between; /* 左右對齊 */
@@ -80,7 +80,8 @@
     <p>你每滑過一下 會出現圖片</p>
     <button onmouseover="showImage()">輕輕碰到就好!</button>
     <br> <br>
-    <img src=""   height="250">                            </div>
+    <p id="loadingText" style="display:none;">圖片載入中...</p>
+    <img id="imageShow" src="" height="250">                        </div>
 
     
     <script>
@@ -90,19 +91,55 @@
 
 
         
-        
+        let cachedImages = []; // 快取用 // 全域快取圖片連結，避免每次都向 GitHub 請求 // cachedImages 用來存放從 GitHub API 拿到的圖片 URL
+
         async function showImage() {
-            const response = await fetch('/get-images');       // 隨機選取陣列索引
-            const images = await response.json();  // JSON → 陣列
-            const randomIndex = Math.floor(Math.random() * images.length);
-            document.querySelector("img").src = "images/" + images[randomIndex]; }
-            
-          
-            
+        // 取得要操作的 HTML 元素
+        const imageEl = document.getElementById("imageShow");
+        const loadingEl = document.getElementById("loadingText");
+   
+        try { // 嘗試執行主要圖片載入流程
+
+             // 顯示 loading 提示
+        loadingEl.style.display = "block";  // 讓「圖片載入中」文字出現在畫面
+        imageEl.style.opacity = 0;          // 將圖片暫時設為透明，等圖片載入完成再淡入
+
+        // 如果快取陣列還是空的，才向 GitHub API 請求
+        if (cachedImages.length === 0) {
+            const response = await fetch('https://api.github.com/repos/<username>/<repo>/contents/images'); 
+            // 取得 repo 裡 images 資料夾內容
+
+            const files = await response.json();  
+            // 轉成 JSON 陣列，每個元素都是一個檔案資訊物件
+
+            cachedImages = files
+                .filter(f => /\.(jpg|jpeg|png)$/i.test(f.name))  // 過濾只要圖片檔（jpg/png/jpeg）
+                .map(f => f.download_url);  // 取出每個檔案的下載 URL
+        }
+
+        // 隨機選一張圖片
+        const randomIndex = Math.floor(Math.random() * cachedImages.length); // 產生 0~(length-1) 的整數
+        imageEl.src = cachedImages[randomIndex]; // 設定 <img> 的 src 屬性，開始載入圖片
+
+        // 當圖片真正載入完成後
+        imageEl.onload = () => {
+            loadingEl.style.display = "none";        // 隱藏「載入中」文字
+            imageEl.style.transition = "opacity 0.8s"; // 設定淡入效果
+            imageEl.style.opacity = 1;               // 將圖片淡入顯示
+        };
+
+    } catch (error) {
+        console.error("圖片載入失敗:", error); // 如果抓 API 或圖片出錯，顯示錯誤
+        loadingEl.textContent = "載入失敗，請稍後再試。"; // 告知使用者
+    }
+}
+
+           
       
     </script>
 </body>
 </html>
+
 
 
 
